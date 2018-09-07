@@ -1,0 +1,126 @@
+@import './variables.scss';
+@import './mixin.scss';
+@import './transition.scss';
+@import './element-ui.scss';
+@import './sidebar.scss';
+
+body {
+  height: 100%;
+  // min-width: 1450px;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+}
+
+label {
+  font-weight: 700;
+}
+
+html {
+  height: 100%;
+  // min-width: 1450px;
+  box-sizing: border-box;
+}
+
+#app{
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  outline: none;
+  text-decoration: none;
+}
+
+div:focus{
+  outline: none;
+ }
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+//main-container全局样式
+.app-main{
+  height: 100%;
+  overflow-y: auto;
+  padding-bottom: 120px;
+  position: relative;
+  background-color:#ffffff;
+}
+//分页居中
+.pagination-container{text-align: center;padding: 40px 0px 10px;}
+// .main-container{
+// }
+.app-container {
+  padding: 20px;
+  left: 10px;
+  right: 10px;
+  background:white;
+  box-sizing: border-box;
+  -webkit-box-shadow: 0 2px 12px 0 rgba(0,0,0,.3);
+  -moz-box-shadow: 0 2px 12px 0 rgba(0,0,0,.3);
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,.3);
+  position: absolute;
+  top: 10px;
+  bottom: 120px;
+}
+
+.mt10{
+  margin-top: 10px;
+}
+
+.treeWarp{
+  padding: 5px;
+  height: 600px;
+}
+
+.el-select-dropdown .el-scrollbar__wrap{
+  overflow-x: scroll;
+}
+.el-tabs--border-card>.el-tabs__header{margin: 0 0 15px;;}
+//修改表格样式
+.el-table td, .el-table th {
+  font-size: 14px;
+  color: #1f2d3d;
+  padding: 10px 0px;
+  min-width: 0;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  border-right: 1px solid #dfe6ec;
+}
+.el-table th {
+  padding: 15px 0px;
+  background-color: #eef1f6;
+  font-weight: bold;
+}
