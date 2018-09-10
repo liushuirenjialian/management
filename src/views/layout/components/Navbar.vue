@@ -7,7 +7,7 @@
         <!--logo-->
         <div style="float: left;margin: 10px 10px 0px 20px;">
           <img src="./001.png" height="36px">
-        </div>
+        </div> 
         <!--title-->
         <span style="float: left;color: #ffffff;font-size: 20px;line-height: 60px;">{{this.title}}</span>
       </div>
@@ -40,12 +40,12 @@
       </div>
       <div style="margin: 0;max-width: 1155px;margin: 0 auto;">
         <!--平台列表-->
-        <b style="color:#FFFFFF;float: left;" @click="private"><i class="icon iconfont icon-zuo"></i></b>
-        <b style="color:#FFFFFF;float: right;" @click="next"><i class="icon iconfont icon-you2"></i></b>
+       <!--  <b style="color:#FFFFFF;float: left;" @click="private"><i class="icon iconfont icon-zuo"></i></b>
+        <b style="color:#FFFFFF;float: right;" @click="next"><i class="icon iconfont icon-you2"></i></b> -->
         <nav class="" style="padding:0;overflow:hidden;height:60px;margin:0;line-height: 60px">
           <div style="width:1500px;" id="emit">
             <!-- 拿到标识，增加点击事件，去请求数据，然后把当前sidebar数据拿到 --> 
-            <span v-for="(item,index)  in this.getinfo" :key="index" :class=" index === active ? 'home':'' " ref='navList' style="padding:0 10px;display: inline-block;vertical-align: top;" @click="trigger(index)">
+            <span id="sss" v-for="(item,index)  in this.getinfo" :key="index" :class=" index === active ? 'home':'' " ref='navList' style="padding:0 10px;display: inline-block;vertical-align: top;" @click="trigger(index)">
               <!-- <a :xh="item.id"  @click="getCurSiderbarData(item.id)" target="_blank"  v-if="item.name=='系统管理'">
                 <el-button class="platform" type="text">
                   <i :class="'icon iconfont'+' '+item.icon" style="font-size: 32px;float: left;margin: -5px 10px 0px 0px;"></i>
@@ -156,7 +156,7 @@
   </div>
 </template>
 <script>
-import { updataPassword, getById, putObj, provinceInfo, getSiderBarInfo } from '@/api/login'
+import { updataPassword, getById, putObj, provinceInfo } from '@/api/login'
 import { User } from '@/api/index'
 import { mapGetters } from 'vuex'
 import Hamburger from '@/components/Hamburger'
@@ -234,40 +234,40 @@ export default {
           trigger: 'blur'
         }],
         username: [{
-            required: true,
-            message: '请输入用户',
-            trigger: 'blur'
-          },
-          {
-            min: 2,
-            max: 20,
-            message: '长度在 2 到 20 个字符',
-            trigger: 'blur'
-          }
+          required: true,
+          message: '请输入用户',
+          trigger: 'blur'
+        },
+        {
+          min: 2,
+          max: 20,
+          message: '长度在 2 到 20 个字符',
+          trigger: 'blur'
+        }
         ],
         name: [{
-            required: true,
-            message: '请输入账户',
-            trigger: 'blur'
-          },
-          {
-            min: 2,
-            max: 20,
-            message: '长度在 2 到 20 个字符',
-            trigger: 'blur'
-          }
+          required: true,
+          message: '请输入账户',
+          trigger: 'blur'
+        },
+        {
+          min: 2,
+          max: 20,
+          message: '长度在 2 到 20 个字符',
+          trigger: 'blur'
+        }
         ],
         phone: [{
-            required: true,
-            message: '请输入手机号',
-            trigger: 'blur'
-          },
-          {
-            min: 11,
-            max: 11,
-            message: '长度在 11 个字符',
-            trigger: 'blur'
-          }
+          required: true,
+          message: '请输入手机号',
+          trigger: 'blur'
+        },
+        {
+          min: 11,
+          max: 11,
+          message: '长度在 11 个字符',
+          trigger: 'blur'
+        }
         ]
       },
       rules2: {
@@ -287,8 +287,8 @@ export default {
       items: [],
       list: [],
       getinfo: [],
-      title: '',
-      zhengyuId:108
+      title: ''
+      // zhengyuId:this.xh
     }
   },
   components: {
@@ -300,17 +300,22 @@ export default {
       return this.data
     }
   },
-  mounted(){
+  created() {
     // debugger
     // this.getCurSiderbarData(this.zhengyuId);
     // window.setTimeout(this.getCurSiderbarData,1000)
   },
-  created() {
+  mounted() {
     this.getlist()
-    console.log(1)
     console.log(this.getinfo)
+    // this.xhs = document.getElementById('sss').attr(xh);
+    // alert(this.xhs);
     // this.getCurSiderbarData(this.zhengyuId);
-    // window.setTimeout(this.getCurSiderbarData(this.zhengyuId),10)
+    // window.setTimeout( _ =>{
+
+    // this.getCurSiderbarData();
+
+    // },300)
     // this.getCurSiderbarData(this.zhengyuId);
     // this.getCurSiderbarData();
     this.userImg = this.photo
@@ -324,8 +329,8 @@ export default {
       this.active = idx
     },
     getCurSiderbarData(id) {
-      debugger
-      Bus.$emit('msg', id);
+      // debugger
+      Bus.$emit('msg', id)
       // getSiderBarInfo(id).then(response =>{
       //    sessionStorage.setItem('siderData',JSON.stringify(response.data))
 
@@ -333,10 +338,12 @@ export default {
     },
     // 平台列表信息展示开始
     getlist() {
-      // debugger
       for (var i = 0; i < this.routes.length; i++) {
+        // debugger
         this.getinfo.push(this.routes[i])
       }
+      var ids = this.getinfo[0].id
+      this.getCurSiderbarData(ids)
     },
     // 平台列表信息展示结束
 

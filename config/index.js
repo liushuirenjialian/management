@@ -11,7 +11,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
 			'/api': {
-				     target: 'http://zuul-server:9002', // 服务器接口
+				target: 'http://zuul-server:9002', // 服务器接口
 				// target: 'http://192.168.40.79:9002', //
 				secure: false, // 如果是https接口，需要配置这个参数
 				changeOrigin: true, // 如果接口跨域，需要进行这个参数配置

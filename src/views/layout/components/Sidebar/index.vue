@@ -10,8 +10,10 @@
       active-text-color="#409EFF"
     >
     <div class="on">
-      <!-- {{message}} -->
-      <sidebar-item :routes="routerList"></sidebar-item>
+      <keep-alive>
+      <sidebar-item :routes="routerList">
+      </sidebar-item>
+    </keep-alive>
     </div>
     </el-menu>
   </el-scrollbar>
@@ -20,10 +22,12 @@
 <script>
 import { mapGetters } from 'vuex'
 import SidebarItem from './SidebarItem'
-import { constantRouterMap2 } from '@/router/index'
-import { updataPassword, getById, putObj, provinceInfo,getSiderBarInfo } from '@/api/login'
+// import { constantRouterMap2 } from '@/router/index'
+import { getSiderBarInfo } from '@/api/login'
 import Bus from '../bus.js'
+import Cookies from 'js-cookie'
 
+// import  getToken from '@/utils/auth'
 export default {
   data() {
     return {
@@ -35,9 +39,6 @@ export default {
     ...mapGetters([
       'sidebar'
     ]),
-    //  routes() {
-    //    return this.$router.options.routes
-    //  },
     isCollapse() {
       return !this.sidebar.opened
     }
@@ -48,43 +49,26 @@ export default {
   //     alert(routerList)
   //  }
   // },
-  mounted(){
-        let self = this;
-        Bus.$on('msg', (e) => {
-        self.message = e
-        var idN = e; 
-        alert(`传来的数据是：${e}`);
-        console.log(self.message);
-        self.getSiderBar(idN);
-       })
+  created() {
+    const self = this
+    Bus.$on('msg', (e) => {
+      self.message = e
+      var idN = e
+      console.log(`传来的数据是：${e}`)
+      console.log(self.message)
+      var menuid = Cookies.get('id')
+      console.log('菜单id:' + menuid)
+
+      self.getSiderBar(idN, menuid)
+    })
   },
   methods: {
-      getSiderBar(id){
-        debugger
-        getSiderBarInfo(id).then(response =>{
-          
-         let ddd  = response.data;
-        this.routerList = ddd[0].children;
-        // sessionStorage.setItem('siderDatass',JSON.stringify(this.routerList)) JSON.parse
-        // alert(this.routerList)
+    getSiderBar(idN, menuid) {
+      getSiderBarInfo(idN, menuid).then(response => {
+        const ddd = response.data
+        this.routerList = ddd[0].children
       })
     }
-  },
-  created() {
-
-    // debugger 这个地方拿到sessionStorae去生产sidebar
-    // let list = sessionStorage.getItem('siderData');
-    // this.routerList   = JSON.parse(list);
-    // alert('aaa'+this.routerList)
-  	// this.routerList = this.$router.options.routes
-  },
-
-  Update() {
-    // let list = sessionStorage.getItem('siderData');
-    // this.routerList   = JSON.parse(list);
-    // alert('aaa'+this.routerList)
-    // console.log(this.routerList)
-  	// this.routerList = sessionStorage.getItem('siderData');
   }
 }
 </script>

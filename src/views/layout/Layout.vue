@@ -6,6 +6,8 @@
       <sidebar class="sidebar-container"></sidebar>
       <div class="main-container">
         <breadcrumb class="bread"></breadcrumb>
+         
+        <iframe id="myFrameId" name="myFrameName" scrolling="no" frameborder="0" style="width:100%;"></iframe>
         <app-main></app-main>
       </div>
     </div>
@@ -16,7 +18,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { Navbar, Sidebar, AppMain } from './components'
+import { Navbar, Sidebar, AppMain, IframeItem } from './components'
 import ResizeMixin from './mixin/ResizeHandler'
 import Breadcrumb from '@/components/Breadcrumb'
 
@@ -26,7 +28,8 @@ export default {
     Sidebar,
     Navbar,
     AppMain,
-    Breadcrumb
+    Breadcrumb,
+    IframeItem
   },
   mixins: [ResizeMixin],
   computed: {
@@ -52,9 +55,7 @@ export default {
     }
   },
   created() {
-    console.log(333)
     console.log(this.formDatas)
-    console.log(333)
   },
   methods: {
     handleClickOutside() {
