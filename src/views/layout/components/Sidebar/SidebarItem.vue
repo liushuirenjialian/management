@@ -9,6 +9,7 @@
             <span v-if="item.meta.title" slot="title">{{item.meta.title}}</span>
         </el-menu-item>
       </a>
+      
       <el-submenu v-else :index="item.name||item.path" :key="item.index">
         <template slot="title">
             <i :class="'icon iconfont'+' '+item.meta.icon"></i>

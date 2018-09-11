@@ -6,9 +6,9 @@
       <sidebar class="sidebar-container"></sidebar>
       <div class="main-container">
         <breadcrumb class="bread"></breadcrumb>
+        <iframe id="myFrameId" name="myFrameName" scrolling="no" frameborder="0" style="width:100%;border:1px solid red;"></iframe>
          
-        <iframe id="myFrameId" name="myFrameName" scrolling="no" frameborder="0" style="width:100%;"></iframe>
-        <app-main></app-main>
+        <!-- <app-main></app-main> -->
       </div>
     </div>
   <!-- </div> -->
@@ -57,6 +57,11 @@ export default {
   created() {
     console.log(this.formDatas)
   },
+  mounted() {
+    const oIframe = document.getElementById('myFrameId')
+    const deviceHeight = document.documentElement.scrollHeight
+    oIframe.style.height = deviceHeight + 'px'
+  },
   methods: {
     handleClickOutside() {
       this.$store.dispatch('CloseSideBar', { withoutAnimation: false })
@@ -86,7 +91,7 @@ export default {
   z-index: 999;
 }
 .main-container {
-  background-color: rgb(228, 232, 238);
+  /*background-color: rgb(228, 232, 238);*/
   height: 100%;
 }
 .bread{

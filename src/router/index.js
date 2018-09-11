@@ -34,7 +34,7 @@ export const constantRouterMap = [{
   name: 'dashboard',
   hidden: true,
   meta: {
-    title: '陕西省粮食企业管理平台',
+    title: '云南省粮食企业管理平台',
     icon: 'example'
   },
   children: [{
@@ -42,7 +42,7 @@ export const constantRouterMap = [{
     component: () =>
 				import('@/views/dashboard/index'),
     meta: {
-      title: '陕西省粮食企业管理平台',
+      title: '云南省粮食企业管理平台',
       icon: 'example'
     }
   }]
