@@ -70,14 +70,22 @@ export function provinceInfo() {
 }
 
 /* 侧导航栏----------------*/
-export function getSiderBarInfo(userId, menuid) {
+// export function getSiderBarInfo(userId, menuid) {
+//   return request({
+//     url: `${User}/guide/findByUserId/${menuid}/${userId}`,
+//     // /menu/getBasePlatform/{id}
+//     // url: `${User}/guide/findByUserId/${userId}/${menuid}`,
+//     method: 'get'
+//   })
+// }
+// 根据用户id拿到侧边栏数据
+export function findSiderMenuById(userId) {
   return request({
-    url: `${User}/guide/findByUserId/${menuid}/${userId}`,
-    // /menu/getBasePlatform/{id}
-    // url: `${User}/guide/findByUserId/${userId}/${menuid}`,
+    url: `${User}/guide/findByUserId?id=${userId}`,
     method: 'get'
   })
 }
+
 // export function getAllMenus() {
 //   return request({
 //     url: '/loginapi/admin/user/front/menu/all',

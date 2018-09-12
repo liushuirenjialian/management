@@ -46,12 +46,14 @@
 		<div class="footer">
 			建议使用Chrome浏览器获得最佳体验<br/>
 			电话：029-88302744 传真：029-88303533<br/>
-			版权所有：陕西省粮食局
+			版权所有：云南省粮食局
 		</div>
 	</div>
 </template>
 
 <script>
+	// import Cookies from 'js-cookie'
+	// import findSiderMenuById from '@/api/login'
 	export default {
 	  components: {},
 	  name: 'login',
@@ -103,6 +105,7 @@
 	            this.$router.push({
 	              path: '/'
 	            })
+	
 	            this.showDialog = true
 	          }).catch(() => {
 	            this.loading = false

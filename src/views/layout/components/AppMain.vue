@@ -4,7 +4,7 @@
     <transition name="fade" mode="out-in">
         <!-- <breadcrumb class="bread"></breadcrumb> -->
      <!--    <iframe id="myFrameId" name="myFrameName" scrolling="no" frameborder="0" style="width:100%;"></iframe> -->
-      <router-view :key="key"></router-view>
+      <router-view></router-view>
      <!--  <router-view>
         
       </router-view> -->

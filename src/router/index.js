@@ -27,6 +27,15 @@ export const constantRouterMap = [{
   redirect: '/404',
   hidden: true
 },
+// {
+//    path: '/iframe',
+//     component: () =>
+//         import('@/views/dashboard/index'),
+//     meta: {
+//       title: '外链',
+//       icon: 'example'
+//     }
+// }
 {
   path: '/',
   component: Layout,
@@ -45,83 +54,102 @@ export const constantRouterMap = [{
       title: '云南省粮食企业管理平台',
       icon: 'example'
     }
-  }]
+  }
+  ]
 },
-// 企业信息审核开始
 {
-  path: '/qyxxsh',
+  path: '/guojia',
   component: Layout,
   meta: {
-    title: '企业信息审核',
+    title: '国家',
     icon: 'example'
   },
   children: [{
-    path: 'index',
-    name: '企业信息审核',
+    path: 'ceshi',
+    name: '测试',
     component: () =>
-					import('@/views/qyxxsh/xinxishenh/index'),
+          import('@/views/qyxxsh/xinxishenh/index'),
     meta: {
       title: '企业信息审核',
       icon: 'form'
     }
-  },
-  {
-    path: 'xinxishenh-sh',
-    name: '企业信息审核查看',
-    hidden: true,
-    meta: {
-      title: '企业信息审核查看',
-      icon: 'form'
-    },
-    component: () =>
-					import('@/views/qyxxsh/xinxishenh/sh')
-  },
-  {
-    path: 'xinxishenh-biangeng',
-    name: '信息变更审核',
-    meta: {
-      title: '信息变更审核',
-      icon: 'form'
-    },
-    component: () =>
-					import('@/views/qyxxsh/xinxishenh/biangeng')
-  },
-  {
-    path: 'xinxishenh-biangengsh',
-    name: '变更',
-    hidden: true,
-    meta: {
-      title: '变更',
-      icon: 'form'
-    },
-    component: () =>
-					import('@/views/qyxxsh/xinxishenh/biangengsh')
-  },
-  {
-    path: 'xinxishenh-lishijl',
-    name: '历史',
-    hidden: true,
-    meta: {
-      title: '历史',
-      icon: 'form'
-    },
-    component: () =>
-					import('@/views/qyxxsh/xinxishenh/lishijl')
-  },
-  {
-    path: 'xinxishenh-historical',
-    name: '历史',
-    hidden: true,
-    meta: {
-      title: '历史',
-      icon: 'form'
-    },
-    component: () =>
-					import('@/views/qyxxsh/xinxishenh/historical')
-  }
-
-  ]
+  }]
 },
+// 企业信息审核开始
+// {
+//   path: '/qyxxsh',
+//   component: Layout,
+//   meta: {
+//     title: '企业信息审核',
+//     icon: 'example'
+//   },
+//   children: [{
+//     path: 'index',
+//     name: '企业信息审核',
+//     component: () =>
+// 					import('@/views/qyxxsh/xinxishenh/index'),
+//     meta: {
+//       title: '企业信息审核',
+//       icon: 'form'
+//     }
+//   },
+//   {
+//     path: 'xinxishenh-sh',
+//     name: '企业信息审核查看',
+//     hidden: true,
+//     meta: {
+//       title: '企业信息审核查看',
+//       icon: 'form'
+//     },
+//     component: () =>
+// 					import('@/views/qyxxsh/xinxishenh/sh')
+//   },
+//   {
+//     path: 'xinxishenh-biangeng',
+//     name: '信息变更审核',
+//     meta: {
+//       title: '信息变更审核',
+//       icon: 'form'
+//     },
+//     component: () =>
+// 					import('@/views/qyxxsh/xinxishenh/biangeng')
+//   },
+//   {
+//     path: 'xinxishenh-biangengsh',
+//     name: '变更',
+//     hidden: true,
+//     meta: {
+//       title: '变更',
+//       icon: 'form'
+//     },
+//     component: () =>
+// 					import('@/views/qyxxsh/xinxishenh/biangengsh')
+//   },
+//   {
+//     path: 'xinxishenh-lishijl',
+//     name: '历史',
+//     hidden: true,
+//     meta: {
+//       title: '历史',
+//       icon: 'form'
+//     },
+//     component: () =>
+// 					import('@/views/qyxxsh/xinxishenh/lishijl')
+//   },
+//   {
+//     path: 'xinxishenh-historical',
+//     name: '历史',
+//     hidden: true,
+//     meta: {
+//       title: '历史',
+//       icon: 'form'
+//     },
+//     component: () =>
+// 					import('@/views/qyxxsh/xinxishenh/historical')
+//   }
+
+//   ]
+// },
   // 价格监测列表
 {
   path: '/priceManage',

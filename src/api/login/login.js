@@ -34,3 +34,10 @@ export function getById(userId) {
     method: 'get'
   })
 }
+// // 根据用户id拿到侧边栏数据
+// export function findSiderMenuById(userId){
+//    return request({
+//     url: `${root}/guide/findByUserId?${userId}`,
+//     method: 'get'
+//   })
+// }

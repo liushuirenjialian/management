@@ -6,9 +6,9 @@
       <sidebar class="sidebar-container"></sidebar>
       <div class="main-container">
         <breadcrumb class="bread"></breadcrumb>
-        <iframe id="myFrameId" name="myFrameName" scrolling="no" frameborder="0" style="width:100%;border:1px solid red;"></iframe>
+<!--         <iframe id="myFrameId" name="myFrameName" scrolling="no" frameborder="0" style="width:100%;border:1px solid red;"></iframe> -->
          
-        <!-- <app-main></app-main> -->
+        <app-main></app-main>
       </div>
     </div>
   <!-- </div> -->
@@ -18,18 +18,19 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { Navbar, Sidebar, AppMain, IframeItem } from './components'
+import { Navbar, Sidebar, AppMain } from './components'
 import ResizeMixin from './mixin/ResizeHandler'
 import Breadcrumb from '@/components/Breadcrumb'
-
+import { findSiderMenuById } from '@/api/login'
+import Cookies from 'js-cookie'
 export default {
   name: 'layout',
   components: {
     Sidebar,
     Navbar,
     AppMain,
-    Breadcrumb,
-    IframeItem
+    Breadcrumb
+
   },
   mixins: [ResizeMixin],
   computed: {
@@ -56,13 +57,28 @@ export default {
   },
   created() {
     console.log(this.formDatas)
+    // uerids
   },
   mounted() {
-    const oIframe = document.getElementById('myFrameId')
-    const deviceHeight = document.documentElement.scrollHeight
-    oIframe.style.height = deviceHeight + 'px'
+    // const oIframe = document.getElementById('myFrameId')
+    // const deviceHeight = document.documentElement.scrollHeight
+    // oIframe.style.height = deviceHeight + 'px'
+    // id
+    var userId = Cookies.get('id')
+    console.log(userId)
+    this.findSiderMenus(userId)
   },
   methods: {
+    findSiderMenus(userId) {
+      findSiderMenuById(userId).then(response => {
+        var dataLis = response.data
+        const ddd = JSON.stringify(dataLis)
+        sessionStorage.setItem('MenuList', ddd)
+        console.log('siderbarMuNU一次请求成功')
+      }).catch(function(error) {
+        console.log(error)
+      })
+    },
     handleClickOutside() {
       this.$store.dispatch('CloseSideBar', { withoutAnimation: false })
     }

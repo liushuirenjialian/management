@@ -587,6 +587,11 @@ export default {
   color: #ffffff;
   background-color: #2eb88f;
   border: none;
+  transition: all 1s;
+  transition-property: all;
+  transition-duration: 1s;
+  transition-timing-function: initial;
+  transition-delay: initial;
 }
 
 .avatar {

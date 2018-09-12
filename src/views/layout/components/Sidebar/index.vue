@@ -11,7 +11,7 @@
     >
     <div class="on">
       <keep-alive>
-      <sidebar-item :routes="routerList">
+      <sidebar-item :routes="routerList" v-on:childByVal="childByVal">
       </sidebar-item>
     </keep-alive>
     </div>
@@ -23,7 +23,7 @@
 import { mapGetters } from 'vuex'
 import SidebarItem from './SidebarItem'
 // import { constantRouterMap2 } from '@/router/index'
-import { getSiderBarInfo } from '@/api/login'
+// import { getSiderBarInfo } from '@/api/login'
 import Bus from '../bus.js'
 import Cookies from 'js-cookie'
 
@@ -31,7 +31,8 @@ import Cookies from 'js-cookie'
 export default {
   data() {
     return {
-      routerList: []
+      routerList: [],
+      statuIfram: 0
     }
   },
   components: { SidebarItem },
@@ -54,21 +55,60 @@ export default {
     Bus.$on('msg', (e) => {
       self.message = e
       var idN = e
-      console.log(`传来的数据是：${e}`)
+      console.log(`从nav传来的数据是：${e}`)
       console.log(self.message)
       var menuid = Cookies.get('id')
       console.log('菜单id:' + menuid)
 
-      self.getSiderBar(idN, menuid)
+      var munuLi = JSON.parse(sessionStorage.getItem('MenuList'))
+      for (var i = munuLi.length - 1; i >= 0; i--) {
+        var index = munuLi[i]
+        if (index.id === idN) {
+          // alert('suc')
+          // var n = index.id
+          var result = munuLi[i].children
+          // 每次点击时候，路由定位到/
+          this.$router.push({
+            path: '/'
+          })
+          console.log(result)
+          this.routerList = result
+          return true
+        }
+      }
+      // munuLi.forEach(function(){
+      // })
+      console.log('侧边栏成功渲染')
+
+      // self.getSiderBar(idN, menuid)
     })
   },
   methods: {
-    getSiderBar(idN, menuid) {
-      getSiderBarInfo(idN, menuid).then(response => {
-        const ddd = response.data
-        this.routerList = ddd[0].children
-      })
+    childByVal: function(childValue) { // childValue就是子组件传过来的值
+      this.statuIfram = childValue
     }
+    // 每次点击去 拿到meunu ，遍历加入标识
+    // getSiderBar(idN, menuid) {
+    //   getSiderBarInfo(idN, menuid).then(response => {
+    //     let sel = this;
+    //     var dataLis = response.data[0];
+    //     // if(dataLis.children == false){
+    //     //    console.log('无数组');
+    //     // }else{
+    //     //   sel.ay =  dataLis.children[0];
+    //     //    if(dataLis.path.slice(0,4) == "http"){
+    //     //     // alert('1')
+    //     //     sel.$set(sel.ay,'keyI',0);
+    //     //      this.routerList = dataLis.children;
+
+    //     // }
+    //      nn dataLis.children;
+
+    //     // this.routerList = dataLis[0].children
+    //   }).catch(function (error) {//加上catch
+    //       console.log(error);
+    //     })
+    // }
   }
 }
 </script>
