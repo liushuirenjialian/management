@@ -484,16 +484,6 @@ export const constantRouterMap = [{
         icon: 'example'
       },
       children: [
-        // {
-        //   path: 'information',
-        //   name: '许可证信息',
-        //   component: () =>
-        //     import('@/views/license/information'),
-        //   meta: {
-        //     title: '许可证信息',
-        //     icon: 'form'
-        //   }
-        // },
         {
           path: 'maintain',
           name: '许可证信息',

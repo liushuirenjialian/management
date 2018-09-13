@@ -9,7 +9,7 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {
+    /*proxyTable: {
 			'/api': {
 				target: 'http://zuul-server:9002', // 服务器接口
 				// target: 'http://192.168.40.79:9002', //
@@ -29,7 +29,7 @@ module.exports = {
 					'^/loginApi': ''
 				}
 			}
-		},
+		},*/
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

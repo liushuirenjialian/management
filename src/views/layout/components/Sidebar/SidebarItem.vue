@@ -1,58 +1,6 @@
 <template>
   <div class="menu-wrapper">
-      <div>
-      <template v-for="item in routes" v-if="!item.hidden&&item.children">
-        <div :key="item.id">
-          <div v-if="item.children.length==0">
-            <a v-if="item.urlType==='http'" :href="item.path" target="myFrameName" @click="childFn">
-              <el-menu-item :index="item.path" :class="{'submenu-title-noDropdown':!isNest}">
-                <i :class="'icon iconfont'+' '+item.meta.icon"></i>
-                <span v-if="item.meta.title" slot="title">{{item.meta.title}}</span>
-              </el-menu-item>
-            </a>
-            <router-link v-else :to="item.path" :key="item.path">
-              <el-menu-item :index="item.path" :class="{'submenu-title-noDropdown':!isNest}">
-                <i :class="'icon iconfont'+' '+item.meta.icon"></i>
-                <span v-if="item.meta.title" slot="title">{{item.meta.title}}</span>
-              </el-menu-item>
-            </router-link>
-          </div>
-          <div v-else>
-            <el-submenu v-if="item.urlType==='http'" :index="item.name||item.path" :key="item.index">
-              <template slot="title">
-                <i :class="'icon iconfont'+' '+item.meta.icon"></i>
-                <span v-if="item.meta&&item.meta.title" slot="title">{{item.meta.title}}</span>
-              </template>
-              <template v-for="child in item.children" v-if="!child.hidden">
-                <sidebar-item :is-nest="true" class="nest-menu" v-if="child.children&&child.children.length>0" :routes="[child]" :key="child.id"></sidebar-item>
-                <a v-else :href="child.path" target="myFrameName" :key="child.index" @click="childFn">
-                  <el-menu-item :index="child.path">
-                    <i :class="'icon iconfont'+' '+item.meta.icon"></i>
-                    <span v-if="child.meta&&child.meta.title" slot="title">{{child.meta.title}}</span>
-                  </el-menu-item>
-                </a>
-              </template>
-            </el-submenu>
-            <el-submenu v-else :index="item.name||item.path" :key="item.index">
-              <template slot="title">
-                <i :class="'icon iconfont'+' '+item.meta.icon"></i>
-                <span v-if="item.meta&&item.meta.title" slot="title">{{item.meta.title}}</span>
-              </template>
-              <template v-for="child in item.children" v-if="!child.hidden">
-                <sidebar-item :is-nest="true" class="nest-menu" v-if="child.children&&child.children.length>0" :routes="[child]" :key="child.path"></sidebar-item>
-                <router-link v-else :to="child.path" :key="child.name">
-                  <el-menu-item :index="child.path">
-                    <!--<i :class="'icon iconfont'+' '+item.meta.icon"></i>-->
-                    <span v-if="child.meta&&child.meta.title" slot="title">{{child.meta.title}}</span>
-                  </el-menu-item>
-                </router-link>
-              </template>
-            </el-submenu>
-          </div>
-        </div>
-      </template>
-    </div>
-        <!-- <template v-for="item in routes" v-if="!item.hidden" >
+        <template v-for="item in routes" v-if="!item.hidden" >
          <router-link v-if="item.children.length==0&&item.urlType=='router'" :key="item.path" :to="item.url">
         <el-menu-item :index="item.path" :class="{'submenu-title-noDropdown':!isNest}">
            <i :class="'icon iconfont'+' '+item.meta.icon"></i>
@@ -73,8 +21,9 @@
           
           <template v-for="child in item.children" v-if="!child.hidden">
             <sidebar-item :is-nest="true" class="nest-menu" v-if="child.children&&child.children.length>0" :routes="[child]" :key="child.index"></sidebar-item>
-             <router-link v-else-if="child.length>0&&child.urlType=='router'" :to="item.url+'/'+child.path" :key="child.name">
-            <el-menu-item :index="item.url+'/'+child.path">
+            <!-- changed 9/14  -->
+             <router-link v-else-if="child.urlType=='router'" :to="child.path" :key="child.name">
+            <el-menu-item :index="item.path">
               <svg-icon v-if="child.meta&&child.meta.icon" :icon-class="child.meta.icon"></svg-icon>
               <span v-if="child.meta&&child.meta.title" slot="title" :rous="item.urlType">{{child.meta.title}}</span>
             </el-menu-item>
@@ -87,7 +36,7 @@
             </a>
           </template>
         </el-submenu>
-      </template> -->
+      </template>
 
 
       <!-- 保留 -->
@@ -179,7 +128,7 @@ export default {
   methods: {
     childFn() {
       this.$router.push({
-        path: '/dashboard'
+        path: '/'
       })
       // alert('111');
     },
