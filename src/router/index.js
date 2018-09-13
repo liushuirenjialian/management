@@ -57,6 +57,16 @@ export const constantRouterMap = [{
   }
   ]
 },
+// {
+//   path: '/iframe',
+//   component: Layout,
+//   meta: {
+//     title: 'iframe',
+//     icon: 'example'
+//   },
+//   component: () =>
+//       import('@/views/Layout/components/IframeItem')
+// },
 {
   path: '/guojia',
   component: Layout,
@@ -75,6 +85,49 @@ export const constantRouterMap = [{
     }
   }]
 },
+{
+  path: '/lunhuanguanli',
+  // name: '轮换管理',
+  component: Layout,
+  // component: () =>
+  //       import('@/views/qyxxsh/xinxishenh/index'),
+  meta: {
+    title: '轮换管理',
+    icon: 'form'
+  },
+  children: [{
+    path: 'lunhuanshenqing',
+    name: '轮换申请',
+    component: () =>
+            import('@/views/qyxxsh/lunhuanguanli/lowerHair/index'),
+    meta: {
+      title: '轮换申请',
+      icon: 'table'
+    }
+  },
+  {
+    path: 'lunhuanjihua',
+    name: '轮换计划',
+    component: () =>
+            import('@/views/qyxxsh/lunhuanguanli/approval/index'),
+    meta: {
+      title: '轮换计划',
+      icon: 'table'
+    }
+  },
+  {
+    path: 'lunhuanyanshou',
+    name: '轮换验收',
+    component: () =>
+            import('@/views/qyxxsh/lunhuanguanli/result/index'),
+    meta: {
+      title: '轮换验收',
+      icon: 'table'
+    }
+  }
+  ]
+},
+
 // 企业信息审核开始
 // {
 //   path: '/qyxxsh',
