@@ -1,6 +1,6 @@
 <template>
   <div class="menu-wrapper">
-    <div>
+      <div>
       <template v-for="item in routes" v-if="!item.hidden&&item.children">
         <div :key="item.id">
           <div v-if="item.children.length==0">
@@ -40,8 +40,8 @@
               </template>
               <template v-for="child in item.children" v-if="!child.hidden">
                 <sidebar-item :is-nest="true" class="nest-menu" v-if="child.children&&child.children.length>0" :routes="[child]" :key="child.path"></sidebar-item>
-                <router-link v-else :to="item.url+'/'+child.path"" :key="child.name">
-                  <el-menu-item :index="item.url+'/'+child.path"">
+                <router-link v-else :to="child.path" :key="child.name">
+                  <el-menu-item :index="child.path">
                     <!--<i :class="'icon iconfont'+' '+item.meta.icon"></i>-->
                     <span v-if="child.meta&&child.meta.title" slot="title">{{child.meta.title}}</span>
                   </el-menu-item>
