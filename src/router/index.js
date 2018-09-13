@@ -7,19 +7,19 @@ Vue.use(Router)
 export const constantRouterMap = [{
   path: '/login',
   component: () =>
-			import('@/views/login/index'),
+      import('@/views/login/index'),
   hidden: true
 },
 {
   path: '/register',
   component: () =>
-			import('@/views/register/index'),
+      import('@/views/register/index'),
   hidden: true
 },
 {
   path: '/404',
   component: () =>
-			import('@/views/404'),
+      import('@/views/404'),
   hidden: true
 },
 {
@@ -27,15 +27,15 @@ export const constantRouterMap = [{
   redirect: '/404',
   hidden: true
 },
-// {
-//    path: '/iframe',
-//     component: () =>
-//         import('@/views/dashboard/index'),
-//     meta: {
-//       title: '外链',
-//       icon: 'example'
-//     }
-// }
+  // {
+  //    path: '/iframe',
+  //     component: () =>
+  //         import('@/views/dashboard/index'),
+  //     meta: {
+  //       title: '外链',
+  //       icon: 'example'
+  //     }
+  // }
 {
   path: '/',
   component: Layout,
@@ -49,24 +49,23 @@ export const constantRouterMap = [{
   children: [{
     path: 'dashboard',
     component: () =>
-				import('@/views/dashboard/index'),
+        import('@/views/dashboard/index'),
     meta: {
       title: '云南省粮食企业管理平台',
       icon: 'example'
     }
-  }
-  ]
+  }]
 },
-// {
-//   path: '/iframe',
-//   component: Layout,
-//   meta: {
-//     title: 'iframe',
-//     icon: 'example'
-//   },
-//   component: () =>
-//       import('@/views/Layout/components/IframeItem')
-// },
+  // {
+  //   path: '/iframe',
+  //   component: Layout,
+  //   meta: {
+  //     title: 'iframe',
+  //     icon: 'example'
+  //   },
+  //   component: () =>
+  //       import('@/views/Layout/components/IframeItem')
+  // },
 {
   path: '/guojia',
   component: Layout,
@@ -78,131 +77,140 @@ export const constantRouterMap = [{
     path: 'ceshi',
     name: '测试',
     component: () =>
-          import('@/views/qyxxsh/xinxishenh/index'),
+        import('@/views/qyxxsh/xinxishenh/index'),
     meta: {
       title: '企业信息审核',
       icon: 'form'
     }
   }]
 },
+  // 多级路由
 {
-  path: '/lunhuanguanli',
-  // name: '轮换管理',
+  path: '/tiaokongchubei',
   component: Layout,
-  // component: () =>
-  //       import('@/views/qyxxsh/xinxishenh/index'),
   meta: {
-    title: '轮换管理',
-    icon: 'form'
+    title: '调控储备',
+    icon: 'example'
   },
   children: [{
-    path: 'lunhuanshenqing',
-    name: '轮换申请',
+    path: 'lunhuanguanli',
+    // name: '轮换管理',
+    // component: Layout,
     component: () =>
+        import('@/components/index'),
+    meta: {
+      title: '轮换管理',
+      icon: 'form'
+    },
+    children: [{
+      path: 'lunhuanshenqing',
+      name: '轮换申请',
+      component: () =>
             import('@/views/qyxxsh/lunhuanguanli/lowerHair/index'),
-    meta: {
-      title: '轮换申请',
-      icon: 'table'
-    }
-  },
-  {
-    path: 'lunhuanjihua',
-    name: '轮换计划',
-    component: () =>
+      meta: {
+        title: '轮换申请',
+        icon: 'table'
+      }
+    },
+    {
+      path: 'lunhuanjihua',
+      name: '轮换计划',
+      component: () =>
             import('@/views/qyxxsh/lunhuanguanli/approval/index'),
-    meta: {
-      title: '轮换计划',
-      icon: 'table'
-    }
-  },
-  {
-    path: 'lunhuanyanshou',
-    name: '轮换验收',
-    component: () =>
+      meta: {
+        title: '轮换计划',
+        icon: 'table'
+      }
+    },
+    {
+      path: 'lunhuanyanshou',
+      name: '轮换验收',
+      component: () =>
             import('@/views/qyxxsh/lunhuanguanli/result/index'),
-    meta: {
-      title: '轮换验收',
-      icon: 'table'
+      meta: {
+        title: '轮换验收',
+        icon: 'table'
+      }
     }
-  }
-  ]
+    ]
+  }]
 },
 
-// 企业信息审核开始
-// {
-//   path: '/qyxxsh',
-//   component: Layout,
-//   meta: {
-//     title: '企业信息审核',
-//     icon: 'example'
-//   },
-//   children: [{
-//     path: 'index',
-//     name: '企业信息审核',
-//     component: () =>
-// 					import('@/views/qyxxsh/xinxishenh/index'),
-//     meta: {
-//       title: '企业信息审核',
-//       icon: 'form'
-//     }
-//   },
-//   {
-//     path: 'xinxishenh-sh',
-//     name: '企业信息审核查看',
-//     hidden: true,
-//     meta: {
-//       title: '企业信息审核查看',
-//       icon: 'form'
-//     },
-//     component: () =>
-// 					import('@/views/qyxxsh/xinxishenh/sh')
-//   },
-//   {
-//     path: 'xinxishenh-biangeng',
-//     name: '信息变更审核',
-//     meta: {
-//       title: '信息变更审核',
-//       icon: 'form'
-//     },
-//     component: () =>
-// 					import('@/views/qyxxsh/xinxishenh/biangeng')
-//   },
-//   {
-//     path: 'xinxishenh-biangengsh',
-//     name: '变更',
-//     hidden: true,
-//     meta: {
-//       title: '变更',
-//       icon: 'form'
-//     },
-//     component: () =>
-// 					import('@/views/qyxxsh/xinxishenh/biangengsh')
-//   },
-//   {
-//     path: 'xinxishenh-lishijl',
-//     name: '历史',
-//     hidden: true,
-//     meta: {
-//       title: '历史',
-//       icon: 'form'
-//     },
-//     component: () =>
-// 					import('@/views/qyxxsh/xinxishenh/lishijl')
-//   },
-//   {
-//     path: 'xinxishenh-historical',
-//     name: '历史',
-//     hidden: true,
-//     meta: {
-//       title: '历史',
-//       icon: 'form'
-//     },
-//     component: () =>
-// 					import('@/views/qyxxsh/xinxishenh/historical')
-//   }
+  // 企业信息审核开始
+  // {
+  //   path: '/qyxxsh',
+  //   component: Layout,
+  //   meta: {
+  //     title: '企业信息审核',
+  //     icon: 'example'
+  //   },
+  //   children: [{
+  //     path: 'index',
+  //     name: '企业信息审核',
+  //     component: () =>
+  //          import('@/views/qyxxsh/xinxishenh/index'),
+  //     meta: {
+  //       title: '企业信息审核',
+  //       icon: 'form'
+  //     }
+  //   },
+  //   {
+  //     path: 'xinxishenh-sh',
+  //     name: '企业信息审核查看',
+  //     hidden: true,
+  //     meta: {
+  //       title: '企业信息审核查看',
+  //       icon: 'form'
+  //     },
+  //     component: () =>
+  //          import('@/views/qyxxsh/xinxishenh/sh')
+  //   },
+  //   {
+  //     path: 'xinxishenh-biangeng',
+  //     name: '信息变更审核',
+  //     meta: {
+  //       title: '信息变更审核',
+  //       icon: 'form'
+  //     },
+  //     component: () =>
+  //          import('@/views/qyxxsh/xinxishenh/biangeng')
+  //   },
+  //   {
+  //     path: 'xinxishenh-biangengsh',
+  //     name: '变更',
+  //     hidden: true,
+  //     meta: {
+  //       title: '变更',
+  //       icon: 'form'
+  //     },
+  //     component: () =>
+  //          import('@/views/qyxxsh/xinxishenh/biangengsh')
+  //   },
+  //   {
+  //     path: 'xinxishenh-lishijl',
+  //     name: '历史',
+  //     hidden: true,
+  //     meta: {
+  //       title: '历史',
+  //       icon: 'form'
+  //     },
+  //     component: () =>
+  //          import('@/views/qyxxsh/xinxishenh/lishijl')
+  //   },
+  //   {
+  //     path: 'xinxishenh-historical',
+  //     name: '历史',
+  //     hidden: true,
+  //     meta: {
+  //       title: '历史',
+  //       icon: 'form'
+  //     },
+  //     component: () =>
+  //          import('@/views/qyxxsh/xinxishenh/historical')
+  //   }
 
-//   ]
-// },
+  //   ]
+  // },
   // 价格监测列表
 {
   path: '/priceManage',
@@ -224,7 +232,7 @@ export const constantRouterMap = [{
       path: 'pointMaintain',
       name: '监测点维护',
       component: () =>
-					import('@/views/priceManage/monitoring/pointMaintain'),
+          import('@/views/priceManage/monitoring/pointMaintain'),
       meta: {
         title: '监测点维护',
         icon: 'table'
@@ -233,7 +241,7 @@ export const constantRouterMap = [{
       path: 'typeMaintain',
       name: '监测类型维护',
       component: () =>
-					import('@/views/priceManage/monitoring/typeMaintain'),
+          import('@/views/priceManage/monitoring/typeMaintain'),
       meta: {
         title: '监测类型维护',
         icon: 'table'
@@ -242,7 +250,7 @@ export const constantRouterMap = [{
       path: 'userMaintain',
       name: '监测人员维护',
       component: () =>
-					import('@/views/priceManage/monitoring/userMaintain'),
+          import('@/views/priceManage/monitoring/userMaintain'),
       meta: {
         title: '监测人员维护',
         icon: 'table'
@@ -252,7 +260,7 @@ export const constantRouterMap = [{
     path: '/statistics',
     name: '价格统计',
     component: () =>
-				import('@/views/priceManage'),
+        import('@/views/priceManage'),
     meta: {
       title: '价格统计',
       icon: 'form'
@@ -261,7 +269,7 @@ export const constantRouterMap = [{
       path: 'information',
       name: '信息统计',
       component: () =>
-					import('@/views/priceManage/priceStatistics/informationStatistics'),
+          import('@/views/priceManage/priceStatistics/informationStatistics'),
       meta: {
         title: '信息统计',
         icon: 'table'
@@ -270,7 +278,7 @@ export const constantRouterMap = [{
       path: 'monitoring',
       name: '各监测点统计',
       component: () =>
-					import('@/views/priceManage/priceStatistics/monitoringStatistics'),
+          import('@/views/priceManage/priceStatistics/monitoringStatistics'),
       meta: {
         title: '各监测点统计',
         icon: 'table'
@@ -279,7 +287,7 @@ export const constantRouterMap = [{
       path: 'validQuote',
       name: '有效报价统计',
       component: () =>
-					import('@/views/priceManage/priceStatistics/validQuote'),
+          import('@/views/priceManage/priceStatistics/validQuote'),
       meta: {
         title: '有效报价统计',
         icon: 'table'
@@ -288,7 +296,7 @@ export const constantRouterMap = [{
       path: 'priceList',
       name: '监测点价格明细',
       component: () =>
-					import('@/views/priceManage/priceStatistics/priceList'),
+          import('@/views/priceManage/priceStatistics/priceList'),
       meta: {
         title: '监测点价格明细',
         icon: 'table'
@@ -298,7 +306,7 @@ export const constantRouterMap = [{
     path: '/weekly',
     name: '价格周评',
     component: () =>
-				import('@/views/priceManage'),
+        import('@/views/priceManage'),
     meta: {
       title: '价格周评',
       icon: 'form'
@@ -307,7 +315,7 @@ export const constantRouterMap = [{
       path: 'weeklyAudit',
       name: '价格周评审核',
       component: () =>
-					import('@/views/priceManage/priceweekly/weeklyAudit'),
+          import('@/views/priceManage/priceweekly/weeklyAudit'),
       meta: {
         title: '价格周评审核',
         icon: 'table'
@@ -327,7 +335,7 @@ export const constantRouterMap = [{
     path: 'application',
     name: '公告管理',
     component: () =>
-				import('@/views/management/application'),
+        import('@/views/management/application'),
     meta: {
       title: '公告管理',
       icon: 'form'
@@ -355,7 +363,7 @@ export const constantRouterMap = [{
         path: 'newApplication',
         name: '新申请信息',
         component: () =>
-							import('@/views/qualDec/newApproval/newApplication'),
+              import('@/views/qualDec/newApproval/newApplication'),
         meta: {
           title: '新申请信息',
           icon: 'form'
@@ -365,7 +373,7 @@ export const constantRouterMap = [{
         path: 'accepted',
         name: '已受理信息',
         component: () =>
-							import('@/views/qualDec/newApproval/accepted'),
+              import('@/views/qualDec/newApproval/accepted'),
         meta: {
           title: '已受理信息',
           icon: 'form'
@@ -375,7 +383,7 @@ export const constantRouterMap = [{
         path: 'passed',
         name: '已通过信息',
         component: () =>
-							import('@/views/qualDec/newApproval/passed'),
+              import('@/views/qualDec/newApproval/passed'),
         meta: {
           title: '已通过信息',
           icon: 'form'
@@ -385,7 +393,7 @@ export const constantRouterMap = [{
         path: 'noPassed',
         name: '未通过信息',
         component: () =>
-							import('@/views/qualDec/newApproval/noPassed'),
+              import('@/views/qualDec/newApproval/noPassed'),
         meta: {
           title: '未通过信息',
           icon: 'form'
@@ -395,7 +403,7 @@ export const constantRouterMap = [{
         path: 'revoked',
         name: '已吊销信息',
         component: () =>
-							import('@/views/qualDec/newApproval/revoked'),
+              import('@/views/qualDec/newApproval/revoked'),
         meta: {
           title: '已吊销信息',
           icon: 'form'
@@ -406,7 +414,7 @@ export const constantRouterMap = [{
         name: '申报详情',
         hidden: true,
         component: () =>
-							import('@/views/qualDec/newApproval/reportForm'),
+              import('@/views/qualDec/newApproval/reportForm'),
         meta: {
           title: '申报详情',
           icon: 'form'
@@ -427,7 +435,7 @@ export const constantRouterMap = [{
         path: 'changeRequest',
         name: '变更申请信息',
         component: () =>
-							import('@/views/qualDec/changeApproval/changeRequest'),
+              import('@/views/qualDec/changeApproval/changeRequest'),
         meta: {
           title: '变更申请信息',
           icon: 'form'
@@ -437,7 +445,7 @@ export const constantRouterMap = [{
         path: 'dismissed',
         name: '已驳回信息',
         component: () =>
-							import('@/views/qualDec/changeApproval/dismissed'),
+              import('@/views/qualDec/changeApproval/dismissed'),
         meta: {
           title: '已驳回信息',
           icon: 'form'
@@ -447,7 +455,7 @@ export const constantRouterMap = [{
         path: 'changed',
         name: '已变更信息',
         component: () =>
-							import('@/views/qualDec/changeApproval/changed'),
+              import('@/views/qualDec/changeApproval/changed'),
         meta: {
           title: '已变更信息',
           icon: 'form'
@@ -458,7 +466,7 @@ export const constantRouterMap = [{
         name: '变更详情',
         hidden: true,
         component: () =>
-							import('@/views/qualDec/changeApproval/reportForm'),
+              import('@/views/qualDec/changeApproval/reportForm'),
         meta: {
           title: '变更详情',
           icon: 'form'
@@ -490,7 +498,7 @@ export const constantRouterMap = [{
           path: 'maintain',
           name: '许可证信息',
           component: () =>
-							import('@/views/qualDec/license/maintain'),
+              import('@/views/qualDec/license/maintain'),
           meta: {
             title: '许可证信息',
             icon: 'form'
@@ -514,7 +522,7 @@ export const constantRouterMap = [{
     path: 'reportForm1',
     name: '代签收任务',
     component: () =>
-			import('@/views/taskReport/reportForm1'),
+        import('@/views/taskReport/reportForm1'),
     meta: {
       title: '代签收任务',
       icon: 'wangshangshenbao'
@@ -524,7 +532,7 @@ export const constantRouterMap = [{
     path: 'reportForm2',
     name: '待办任务',
     component: () =>
-			import('@/views/taskReport/reportForm2'),
+        import('@/views/taskReport/reportForm2'),
     meta: {
       title: '待办任务',
       icon: 'wangshangshenbao'
@@ -535,7 +543,7 @@ export const constantRouterMap = [{
     hidden: true,
     name: '已办任务',
     component: () =>
-			import('@/views/taskReport/reportForm3'),
+        import('@/views/taskReport/reportForm3'),
     meta: {
       title: '已办任务',
       icon: 'wangshangshenbao'
@@ -544,7 +552,7 @@ export const constantRouterMap = [{
     path: 'reportForm4',
     name: '参与的任务',
     component: () =>
-			import('@/views/taskReport/reportForm4'),
+        import('@/views/taskReport/reportForm4'),
     meta: {
       title: '参与的任务',
       icon: 'wangshangshenbao'
@@ -553,7 +561,7 @@ export const constantRouterMap = [{
     path: 'reportForm5',
     name: '发起流程',
     component: () =>
-			import('@/views/taskReport/reportForm5'),
+        import('@/views/taskReport/reportForm5'),
     meta: {
       title: '发起流程',
       icon: 'wangshangshenbao'
