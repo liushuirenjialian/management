@@ -25,7 +25,6 @@ import SidebarItem from './SidebarItem'
 // import { constantRouterMap2 } from '@/router/index'
 // import { getSiderBarInfo } from '@/api/login'
 import Bus from '../bus.js'
-import Cookies from 'js-cookie'
 
 // import  getToken from '@/utils/auth'
 export default {
@@ -57,11 +56,11 @@ export default {
       var idN = e
       console.log(`从nav传来的数据是：${e}`)
       console.log(self.message)
-      var menuid = Cookies.get('id')
-      console.log('菜单id:' + menuid)
 
       var munuLi = JSON.parse(sessionStorage.getItem('MenuList'))
-      for (var i = munuLi.length - 1; i >= 0; i--) {
+      // for (var i = munuLi.length - 1; i >= 0; i--) {
+      for (var i = 0; i < munuLi.length; i++) {
+        // debugger
         var index = munuLi[i]
         if (index.id === idN) {
           // alert('suc')
